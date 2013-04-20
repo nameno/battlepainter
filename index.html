@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<style type="text/css" src="style.css"></style>
+
+		<!--<script type="text/javascript" src="/~node/battlepainter/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>-->
+		<script type="text/javascript" src="js/helpings.js"></script>
+		<script type="text/javascript" src="js/Network.js"></script>
+		<script type="text/javascript" src="js/Chat.js"></script>
+		<script type="text/javascript" src="js/Player.js"></script>
+		<script type="text/javascript" src="js/Game.js"></script>
+
+
+		<script type="text/javascript">
+			
+			function wrapper()
+			{
+				//Creating Canvas
+				var canvas = document.getElementById("canvas");
+				var c = canvas.getContext("2d");
+				
+				//Loading the Request Animation Frame
+				loadRAF();
+
+				//Create and load Network and Chat
+				var network = new Network().load;
+				var chat = new Chat().load;
+
+				//Create Game and Player
+				var game = new Game();
+				game.createPlayer("blue","nameno");
+
+
+				
+
+				animate();
+
+				function animate()
+				{
+					game.update();
+					game.draw(c);
+					
+					requestAnimFrame(function() {
+						animate();
+													});
+				}
+
+				c.fillStyle = "white";
+				c.fillRect(0,0,canvas.width, canvas.height);
+				c.fillStyle ="black";
+				c.fillText("test",100,100);
+			}
+			window.onload = function(){
+							//Loading the Screen
+							loadDOMEventHandlers();
+							loadStyle();
+				wrapper();
+			}
+		</script>
+	</head>
+	<body bgcolor = "black">
+		
+		<div id="wrapper">
+			<canvas id="canvas" width="400" height="400">
+			</canvas>
+
+			<div id="chat">
+				<form>	
+
+					<textarea id="textarea" rows="5" cols="30" readonly >
+
+					</textarea>
+
+					<input type="button" id="senden" value="Senden">
+					<input cols="30" id="chatInput"></input>
+					</input>
+				</form>
+			</div>		
+		</div>
+	<body>
+</html>

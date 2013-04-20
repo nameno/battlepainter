@@ -1,0 +1,27 @@
+body
+{
+	background-color:black;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+	#canvas
+	{
+					border:0px;
+					margin:0px;
+					padding:0px;
+					position:relative;
+					display:block;
+	}
+
+	#textarea
+	{
+		background-color:black;
+
+	}
+
+	#wrapper
+	{
+		
+	}
+
